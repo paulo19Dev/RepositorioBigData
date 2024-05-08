@@ -29,7 +29,6 @@ def inserir_dados(nome, email, cpf, telefone):
     if conexao is not None:
         try:
             cursor = conexao.cursor()
-            # Use SERIAL ou BIGSERIAL para autoincrementar a coluna "id"
             cursor.execute("INSERT INTO usuario (nome, email, cpf, telefone) VALUES (%s, %s, %s, %s) RETURNING id", (nome, email, cpf, telefone))
             id_inserido = cursor.fetchone()[0]
             conexao.commit()
@@ -57,13 +56,13 @@ def inserir_dados(nome, email, cpf, telefone):
             janelaPrincipal.geometry('700x350')
             janelaPrincipal.config(bg='#E7E7E7')
             janelaPrincipal.title('Tela principal')
+
+            #NESSA JANELA FICARAM OS GRAFICOS
             
             label = Label(janelaPrincipal, text='Estoque - Supermercado Canadá')
             label['font'] = 30
             label.config(bg='#E7E7E7')
             label.pack()
-
-            
 
             print(id_inserido)
         except psycopg2.Error as e:
