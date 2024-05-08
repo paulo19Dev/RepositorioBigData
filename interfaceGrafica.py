@@ -51,18 +51,25 @@ def inserir_dados(nome, email, cpf, telefone):
                 smtp.send_message(msg)
             
             # JANELA PRINCIPAL
-            Janela.withdraw()
+            #Janela.withdraw() - ISSO FAZ COM APAGUE A TELA DE CADASTRO APOS TER FEITO POREM,
+            #NAO E EXECUTADO NOVAMENTE O CODIGO NO EDITOR, TA EM COMENATRIO POR ENQUANTO
+            
             janelaPrincipal = Toplevel()
             janelaPrincipal.geometry('700x350')
             janelaPrincipal.config(bg='#E7E7E7')
             janelaPrincipal.title('Tela principal')
 
             #NESSA JANELA FICARAM OS GRAFICOS
+
+            title1 = Label(janelaPrincipal, text='Supermercado Canadá')
+            title1['font'] = 30
+            title1.config(bg='#E7E7E7')
+            title1.pack(pady=10)
             
-            label = Label(janelaPrincipal, text='Estoque - Supermercado Canadá')
+            label = Label(janelaPrincipal, text='CATEGORIAS')
             label['font'] = 30
             label.config(bg='#E7E7E7')
-            label.pack()
+            label.pack(pady=10)
 
             print(id_inserido)
         except psycopg2.Error as e:
