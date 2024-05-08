@@ -3,6 +3,7 @@ import psycopg2
 import smtplib
 from email.message import EmailMessage
 from filesecret import senhaEmail
+from filesecret import senhaBD
 
 Janela = Tk()
 Janela.geometry('700x350')
@@ -14,7 +15,7 @@ def conectar():
         conexao = psycopg2.connect(
             dbname="userbigdata",
             user="postgres",
-            password="Paulo19",
+            password=senhaBD,
             host="localhost",
             port="5432"
         )
