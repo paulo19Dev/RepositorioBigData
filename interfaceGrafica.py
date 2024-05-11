@@ -44,7 +44,7 @@ def inserir_dados(nome, email, cpf, telefone):
             
             conteudo_email = (
                 f'Olá {nome}, seja bem vindo\n\n'
-                f'Seu cadastro foi realizado com sucesso em nosso sistema!\n'
+                f'em nosso sistema! , fique por dentro das novidades!\n'
             )
             msg.set_content(conteudo_email)
             
@@ -56,7 +56,7 @@ def inserir_dados(nome, email, cpf, telefone):
             janelaPrincipal = Toplevel()
             janelaPrincipal.geometry('1365x735')
             janelaPrincipal.config(bg='#E7E7E7')
-            janelaPrincipal.title('TELA PRINCIPAL')
+            janelaPrincipal.title('TELA PRINCIPAL - SUPERMERCADO CANADA')
             
             title2 = Label(janelaPrincipal, text='Supermercado Canadá',font=("Arial", 20))
             title2.config(bg='#E7E7E7')
@@ -76,7 +76,7 @@ def inserir_dados(nome, email, cpf, telefone):
         print("Falha ao conectar ao banco de dados.")
 def fundo_Registre():
     image = Image.open('fundo.webp')
-    width, height = 500, 650
+    width, height = 500, 550
     image = image.resize((width, height))
     photo = ImageTk.PhotoImage(image)
     label = Label(Janela, image=photo)
@@ -89,9 +89,9 @@ def sucesso_cadastro():
     messagebox.showinfo('Seja bem vindo!', 'Cadastro realizado com sucesso ✔')
     inserir_dados()
 
-def verifica_campos_preenchidos(nome, email, cpf, telefone, user, password):
-    if nome.get() == "" or email.get() == "" or cpf.get() == "" or telefone.get() == "" or user.get() == "" or password.get() == "":
-        messagebox.showerror('Ops erro!', 'Por favor, preencha todos os campos.')
+def verifica_campos_preenchidos(nome, email, cpf, telefone):
+    if nome.get() == "" or email.get() == "" or cpf.get() == "" or telefone.get() == "":
+        messagebox.showerror('Ops ocorreu um erro!', 'Por favor, preencha todos os campos.')
     elif len(nome.get()) < 2:
         messagebox.showerror('Erro!','Nome com poucos caracteres\n exemplo → jose')
     elif len(email.get()) < 5:
@@ -100,10 +100,6 @@ def verifica_campos_preenchidos(nome, email, cpf, telefone, user, password):
         messagebox.showerror('Erro!','Cpf com poucos digitos,\n exemplo → 999.888.444-55')
     elif len(telefone.get()) < 10:
         messagebox.showerror('Erro!','Telefone com poucos digitos,\n exemplo → (62) 9 9999-9999')
-    elif len(user.get()) < 3:
-        messagebox.showerror('Erro!','Usuário com poucos digitos,\n exemplo → joaozinho')
-    elif len(password.get()) < 3:
-        messagebox.showerror('Erro!','Senha com poucos digitos,\n quantidade maxima é 4')
     else:
         sucesso_cadastro()
         
@@ -111,15 +107,7 @@ def main():
     title = Label(text='CADASTRAR',font=("Arial", 30))
     title.config(bg='#787878',fg='white')
     title.pack(side=TOP,pady=60)
-    
-    bloco0 = Frame()
-    bloco0.config(bg='#787878')
-    bloco0.pack()
-    
-    bloco1 = Frame()
-    bloco1.config(bg='#787878')
-    bloco1.pack()
-    
+        
     bloco1 = Frame()
     bloco1.config(bg='#787878')
     bloco1.pack()
@@ -136,89 +124,43 @@ def main():
     bloco4.config(bg='#787878')
     bloco4.pack()
     
-    bloco5 = Frame()
-    bloco5.config(bg='#787878')
-    bloco5.pack()
-    
-    bloco6 = Frame()
-    bloco6.config(bg='#787878')
-    bloco6.pack()
-    
-    bloco7 = Frame()
-    bloco7.config(bg='#787878')
-    bloco7.pack()
-    
-    bloco8 = Frame()
-    bloco8.config(bg='#787878')
-    bloco8.pack()
-    
-    bloco9 = Frame()
-    bloco9.config(bg='#787878')
-    bloco9.pack()
-    
-    bloco10 = Frame()
-    bloco10.config(bg='#787878')
-    bloco10.pack()
-    
-    bloco11 = Frame()
-    bloco11.config(bg='#787878')
-    bloco11.pack()
-
-    labelNome = Label(bloco0,text='Nome',font=("Arial", 15))
+    labelNome = Label(bloco1,text='Nome:',font=("Arial", 15))
     labelNome.config(bg='#787878',fg='white')
-    labelNome.pack()
+    labelNome.pack(side=LEFT)
     
-    nome = Entry(bloco1,width=30,justify='left')
+    nome = Entry(bloco1,width=30)
     nome.config(bg='#CACACA',fg='black')
     nome['font'] = 20
-    nome.pack(side=LEFT,pady=6)
-        
-    labelEmail = Label(bloco2,text='Email',font=("Arial", 15),justify='left')
-    labelEmail.config(bg='#787878',fg='white')
-    labelEmail.pack(side=LEFT,pady=6)
+    nome.pack(pady=15,padx=3)
     
-    email = Entry(bloco3,width=30,justify='left')
+    labelEmail = Label(bloco2,text='Email:',font=("Arial", 15))
+    labelEmail.config(bg='#787878',fg='white')
+    labelEmail.pack(side=LEFT)
+    
+    email = Entry(bloco2,width=30)
     email.config(bg='#CACACA',fg='black')
     email['font'] = 20
-    email.pack(side=LEFT,pady=6)
+    email.pack(pady=15,padx=10)
     
-    labelCpf = Label(bloco4,text='CPF',font=("Arial", 15),justify='left')
+    labelCpf = Label(bloco3,text='Cpf:',font=("Arial", 15))
     labelCpf.config(bg='#787878',fg='white')
-    labelCpf.pack(side=LEFT,pady=6)
+    labelCpf.pack(side=LEFT,padx=9)
     
-    cpf = Entry(bloco5,width=30,justify='left')
+    cpf = Entry(bloco3,width=30)
     cpf.config(bg='#CACACA',fg='black')
     cpf['font'] = 20
-    cpf.pack(side=LEFT,pady=6)
+    cpf.pack(pady=15,padx=15)
     
-    labelTelefone = Label(bloco6,text='Telefone',font=("Arial", 15),justify='left')
+    labelTelefone = Label(bloco4,text='Telefone:',font=("Arial", 15))
     labelTelefone.config(bg='#787878',fg='white')
-    labelTelefone.pack(side=LEFT,pady=6)
+    labelTelefone.pack(side=LEFT)
     
-    telefone = Entry(bloco7,width=30,justify='left')
+    telefone = Entry(bloco4,width=27)
     telefone.config(bg='#CACACA',fg='black')
     telefone['font'] = 20
-    telefone.pack(side=LEFT,pady=6)
-
-    labelUser = Label(bloco8,text='Usuário',font=("Arial", 15),justify='left')
-    labelUser.config(bg='#787878',fg='white')
-    labelUser.pack(side=LEFT,pady=6)
+    telefone.pack(pady=15)
     
-    user = Entry(bloco9,width=30,justify='left')
-    user.config(bg='#CACACA',fg='black')
-    user['font'] = 20
-    user.pack(side=LEFT,pady=6)
-    
-    labelPassword = Label(bloco10,text='Senha',font=("Arial", 15),justify='left')
-    labelPassword.config(bg='#787878',fg='white')
-    labelPassword.pack(side=LEFT,pady=6)
-    
-    password = Entry(bloco11,width=30,justify='left')
-    password.config(bg='#CACACA',fg='black')
-    password['font'] = 20
-    password.pack(side=LEFT,pady=6)
-    
-    cadastrar = Button(text='Cadastrar', command=lambda: verifica_campos_preenchidos(nome, email, cpf, telefone, user, password),width=10,font=("Arial", 15))
+    cadastrar = Button(text='Cadastrar', command=lambda: verifica_campos_preenchidos(nome, email, cpf, telefone),width=10,font=("Arial", 15))
     cadastrar.config(bg='white',fg='black')
     cadastrar.pack(pady=10)
     
