@@ -26,7 +26,7 @@ def conectar():
         print("Erro ao conectar ao PostgreSQL:", e)
         return None
 
-def inserir_dados(nome, email, cpf, telefone):
+def tela_Principal(nome, email, cpf, telefone):
     conexao = conectar()
     if conexao is not None:
         try:
@@ -87,7 +87,7 @@ fundo_Registre()
 
 def sucesso_cadastro():
     messagebox.showinfo('Seja bem vindo!', 'Cadastro realizado com sucesso ✔')
-    inserir_dados()
+    tela_Principal()
 
 def verifica_campos_preenchidos(nome, email, cpf, telefone):
     if nome.get() == "" or email.get() == "" or cpf.get() == "" or telefone.get() == "":
@@ -103,10 +103,10 @@ def verifica_campos_preenchidos(nome, email, cpf, telefone):
     else:
         sucesso_cadastro()
         
-def main():
+def tela_Cadastro():
     title = Label(text='Realizar cadastro',font=("Arial", 30))
     title.config(bg='#787878',fg='white')
-    title.pack(side=TOP,pady=60)
+    title.pack(side=TOP,pady=70)
         
     bloco1 = Frame()
     bloco1.config(bg='#787878')
@@ -164,6 +164,6 @@ def main():
     cadastrar.config(bg='white',fg='black')
     cadastrar.pack(pady=10)
     
-    Janela.mainloop()
 if __name__ == "__main__":
-    main()
+    tela_Cadastro()
+    Janela.mainloop()
