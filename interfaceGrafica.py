@@ -104,7 +104,7 @@ def verifica_campos_preenchidos(nome, email, cpf, telefone):
         sucesso_cadastro()
         
 def main():
-    title = Label(text='CADASTRAR',font=("Arial", 30))
+    title = Label(text='Realizar cadastro',font=("Arial", 30))
     title.config(bg='#787878',fg='white')
     title.pack(side=TOP,pady=60)
         
