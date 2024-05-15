@@ -6,8 +6,8 @@ import openpyxl
 import pandas as pd
 
 # Carrega o arquivo Excel
-file_name = "teste.xlsx"  # Nome do arquivo
-sheet_name = "Cadastro Estoque 2024"  # Nome da planilha
+file_name = " "  # Nome do arquivo
+sheet_name = " "  # Nome da planilha
 df = pd.read_excel(file_name, sheet_name=sheet_name)
 
 # Verifica as categorias de produtos na coluna "type" e conta a quantidade de produtos presentes em cada uma
